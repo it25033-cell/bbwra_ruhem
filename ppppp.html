@@ -1,0 +1,154 @@
+[06/28/2026 1:03 AM] Paiwast: <!DOCTYPE html>
+<html lang="ckb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لێم خۆش بە 🥺</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fff0f3;
+            background-image: radial-gradient(#ffb3c1 20%, transparent 20%), radial-gradient(#ffb3c1 20%, transparent 20%);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            direction: rtl;
+            padding: 20px;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(255, 75, 110, 0.15);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            border: 2px solid #ffccd5;
+            position: relative;
+        }
+        img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        h1 {
+            color: #ff4d6d;
+            font-size: 22px;
+            margin-bottom: 30px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.5;
+        }
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            height: 60px;
+            width: 100%;
+        }
+        button {
+            padding: 12px 35px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        #yesBtn {
+            background-color: #c71585;
+            color: white;
+            transition: transform 0.2s ease;
+        }
+        #noBtn {
+            background-color: #808080;
+            color: white;
+            transition: all 0.1s ease;
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img id="gifImage" src="https://media.tenor.com/0v81_7gA97YAAAAi/sad-cat-crying-cat.gif" alt="Sad">
+        <h1 id="statusText">خەریکە دڵم پڕ دەبێت، لێم خۆش دەبیت؟ 💔</h1>
+
+        <div class="buttons">
+            <button id="yesBtn" onclick="celebrate()">بەڵێ</button>
+            <button id="noBtn">نەخێر 😭</button>
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const statusText = document.getElementById('statusText');
+        const gifImage = document.getElementById('gifImage');
+        const yesBtn = document.getElementById('yesBtn');
+
+        const messages = [
+            "تۆزێ بیر بکەرەوە... دڵت دێت؟ 🥺",
+            "ئۆففف، تکایه خۆشمدەوێیت! 💔",
+            "بۆچی وا ئەکەیت؟ بەڵێ دابگرە دەی 😭",
+            "هەر ناچاریت ڕازیبیت، هەر ڕائەکەم! 😂"
+        ];
+        
+        let messageIndex = 0;
+        let yesScale = 1;
+
+        function moveButton() {
+            // گۆڕینی پۆزیشن بۆ ئەبسلوت تەنها کاتێک کە یەکەم جوڵە دەست پێدەکات
+            noBtn.style.position = 'absolute';
+            
+            // ئەژمارکردنی شوێنەکە بە جۆرێک تەنها لە ناو پەنجەرەی بینراوی شاشەکەدا بجوڵێت
+            const padding = 30;
+            const maxX = window.innerWidth - noBtn.offsetWidth - padding;
+            const maxY = window.innerHeight - noBtn.offsetHeight - padding;
+            
+            const randomX = Math.floor(Math.random() * (maxX - padding)) + padding;
+            const randomY = Math.floor(Math.random() * (maxY - padding)) + padding;
+noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+
+            // گۆڕینی دەقەکە
+            statusText.innerText = messages[messageIndex];
+            if (messageIndex < messages.length - 1) {
+                messageIndex++;
+            }
+
+        
+        }
+
+        // ڕووداوەکان بۆ کۆمپیوتەر و مۆبایل
+        noBtn.addEventListener('mouseover', moveButton);
+        noBtn.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            moveButton();
+        });
+
+        function celebrate() {
+            statusText.innerText = "یەییی! سوپاس بۆ دڵە پاکەکەت! دڵخۆشترینم ئێستا ❤️🎉";
+            gifImage.src = "https://media.tenor.com/gO_j6nS_SgQAAAAM/bubu-bubu-dudu.gif";
+            noBtn.style.display = 'none';
+            yesBtn.style.transform = "scale(1)";
+        }
+    </script>
+
+</body>
+</html>
